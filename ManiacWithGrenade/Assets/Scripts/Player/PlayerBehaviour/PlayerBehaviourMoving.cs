@@ -21,7 +21,10 @@ public class PlayerBehaviourMoving : PlayerBehaviourBase, IPlayerBehaviour
         inputX = Input.GetAxis("Horizontal");
         inputZ = Input.GetAxis("Vertical");
 
-        if (!CanMoving()) inputZ = 0.0f;
+        if (inputZ > 0.0f && !CanMoving())
+        { 
+            inputZ = 0.0f; 
+        }
 
         movingDirection = playerController.Transform.forward * inputZ + playerController.Transform.right * inputX;
         movingDirection.y = 0.0f;
